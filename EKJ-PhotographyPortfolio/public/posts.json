@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "title": "First Blog Post",
+      "image": "https://placekitten.com/400/300",
+      "description": "This is the description for the first blog post."
+    },
+    {
+      "id": 2,
+      "title": "Second Blog Post",
+      "image": "https://placekitten.com/400/301",
+      "description": "This is the description for the second blog post."
+    },
+    {
+      "id": 3,
+      "title": "Third Blog Post",
+      "image": "https://placekitten.com/400/302",
+      "description": "This is the description for the third blog post."
+    }
+  ]
