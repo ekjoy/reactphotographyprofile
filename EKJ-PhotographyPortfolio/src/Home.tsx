@@ -19,13 +19,19 @@ const Home = () => {
       <h1>Blog Posts</h1>
       <div className="row">
         {posts.map((post) => (
-          <div key={post.id} className="col-md-4 mb-4">
+          <div
+            key={post.id}
+            className="col-lg-4 mb-3 d-flex align-items-stretch"
+          >
             <div className="card">
               <img src={post.image} className="card-img-top" alt={post.title} />
-              <div className="card-body">
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">{post.description}</p>
-                <Link to={`/post/${post.id}`} className="btn btn-primary">
+                <p className="card-text mb-4">{post.description}</p>
+                <Link
+                  to={`/post/${post.id}`}
+                  className="btn btn-primary text-white mt-auto align-self-start"
+                >
                   Read More
                 </Link>
               </div>

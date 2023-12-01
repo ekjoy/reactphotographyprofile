@@ -8,7 +8,7 @@
     {
       "id": 2,
       "title": "Second Blog Post",
-      "image": "https://placekitten.com/400/301",
+      "image":  "https://placekitten.com/300/300",
       "description": "This is the description for the second blog post."
     },
     {
@@ -16,5 +16,17 @@
       "title": "Third Blog Post",
       "image": "https://placekitten.com/400/302",
       "description": "This is the description for the third blog post."
-    }
+    },
+    {
+      "id": 4,
+      "title": "Fourth Blog Post",
+      "image": "https://placekitten.com/300/300",
+      "description": "This is the description for the fourth blog post."
+    },
+     {
+        "id": 5,
+        "title": "Fifth Blog Post",
+        "image": "https://placekitten.com/400/302",
+        "description": "This is the description for the third blog post."
+      }
   ]
