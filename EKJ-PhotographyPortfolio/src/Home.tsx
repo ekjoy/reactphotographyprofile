@@ -5,11 +5,14 @@ import BlogPost from "./types";
 
 const Home = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const thumpnailurl = "http://coreapi.eldhosekjoy.com/images/";
 
   useEffect(() => {
     // Fetch data from the JSON file (replace with your API endpoint)
     axios
-      .get("posts.json")
+      .get(
+        "http://coreapi.eldhosekjoy.com/api/BlogTopicContent/GetTopfivetopics"
+      )
       .then((response) => setPosts(response.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -24,7 +27,11 @@ const Home = () => {
             className="col-lg-4 mb-3 d-flex align-items-stretch"
           >
             <div className="card">
-              <img src={post.image} className="card-img-top" alt={post.title} />
+              <img
+                src={thumpnailurl + post.image}
+                className="card-img-top"
+                alt={post.title}
+              />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{post.title}</h5>
                 <p className="card-text mb-4">{post.description}</p>

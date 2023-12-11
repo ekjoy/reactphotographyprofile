@@ -2,7 +2,7 @@ import Message from "./Message";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Post from "./post";
+import Post from "./Post";
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
     // </Router>
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/post/:id" element={<Post></Post>} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 import BlogPost from "./types";
 
 const updateMetaTags = (post: BlogPost) => {
-  document.title = post.title;
+  document.title = post?.title;
 
   // Update or create the description meta tag
   let metaDescription = document.querySelector('meta[name="description"]');
@@ -28,20 +28,43 @@ const updateMetaTags = (post: BlogPost) => {
 const Post = () => {
   const { id } = useParams();
 
-  const [post, setPost] = useState<BlogPost | null>(null);
+  const [post, setPost] = useState<BlogPost>();
+  const thumpnailurl = "http://coreapi.eldhosekjoy.com/images/";
 
   useEffect(() => {
     // Fetch data for a specific post based on the id parameter
     axios
-      .get<BlogPost[]>("/posts.json?id=${id}")
+      .get<BlogPost>(
+        "http://coreapi.eldhosekjoy.com/api/BlogTopicContent/GetBlogTopicContent?id=" +
+          id
+      )
       .then((response) => {
-        if (response.data.length > 0) {
-          console.log(response.data);
-          const retrievedPost = response.data.find(
-            (p) => p.id === parseInt(id, 10)
-          );
+        if (response.data) {
+          // if (response.data.length > 0) {
+          //   console.log(response.data);
+          //   let retrievedPost: BlogPost | undefined = response.data.find(
+          //     (p) => p.id.toString() === id
+          //   );
+          //   setPost(retrievedPost);
+          //   updateMetaTags(retrievedPost!);
+          // }
+          // let retrievedPost: BlogPost | undefined = response.data.pipe(map((x) => {
+          //   const blogPost: BlogPost = {
+          //     id: x.id,
+          //     title: x.title,
+          //     description: x.description,
+          //     content: x.content,
+          //     image: x.image,
+          //     labels: [],
+          //     modifiedBy: "",
+          //     modifieddate: "",
+          //   };
+          //   return blogPost;
+          // }));
+          let retrievedPost: BlogPost | undefined = response.data;
+          console.log(retrievedPost);
           setPost(retrievedPost);
-          updateMetaTags(retrievedPost);
+          updateMetaTags(retrievedPost!);
         } else {
           console.error("No post found with the specified ID.");
         }
@@ -67,10 +90,30 @@ const Post = () => {
   //   }, [post]);
 
   return (
-    <div className="container mt-5">
-      <h1>{post?.title}</h1>
-      <img src={post?.image} className="img-fluid mb-4" alt={post?.title} />
-      <p>{post?.description}</p>
+    <div className="container mt-4" style={{ paddingTop: "30px" }}>
+      {/* <h1>{post?.title}</h1>
+      <img
+        src={thumpnailurl + post?.image}
+        className="img-img-fluid mb-4"
+        alt={post?.title}
+      />
+      <div dangerouslySetInnerHTML={{ __html: post?.content! }} /> */}
+
+      <div className="row">
+        <div className="card">
+          <h1>{post?.title}</h1>
+          <img
+            src={thumpnailurl + post?.image}
+            className="card-img-top"
+            alt={post?.title}
+          />
+
+          <div
+            className="card-body d-flex flex-column"
+            dangerouslySetInnerHTML={{ __html: post?.content! }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
